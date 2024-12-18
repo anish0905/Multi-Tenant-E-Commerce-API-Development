@@ -47,8 +47,16 @@ const Login = () => {
           password: formData.password,
         });
         console.log("Login Success:", response.data);
-        alert("Login Successful!");
-        navigate("/dashboard");
+
+        const { token, vendor } = response.data;
+        if (token) {
+          localStorage.setItem("token", token);
+          localStorage.setItem("venderId", vendor._id);
+          alert("Login Successful!");
+          navigate("/dashboard");
+        } else {
+          alert("Invalid Credentials!");
+        }
 
         setFormData({ email: "", password: "" });
       }
