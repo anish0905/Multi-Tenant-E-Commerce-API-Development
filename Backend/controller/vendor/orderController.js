@@ -49,11 +49,11 @@ const createOrder = async (req, res) => {
 const updateOrder = async (req, res) => {
   try {
     const { id } = req.params; // Order ID
-    const { product, quantity, status } = req.body;
+    const { status } = req.body;
 
     const updatedOrder = await Order.findByIdAndUpdate(
       id,
-      { product, quantity, status },
+      { status },
       { new: true }
     );
 

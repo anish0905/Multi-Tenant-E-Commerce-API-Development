@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FaTachometerAlt,
   FaBox,
@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 
 const SideBar = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-gray-800 text-white h-screen w-60 shadow-lg rounded-r-lg">
       {/* Logo */}
@@ -61,6 +62,11 @@ const SideBar = () => {
         <a
           href="#"
           className="flex items-center p-3 bg-red-500 rounded-md hover:bg-red-600 transition duration-300"
+          onClick={() => {
+            console.log("clear");
+            localStorage.clear();
+            navigate("/");
+          }}
         >
           <FaSignOutAlt className="mr-3" /> Logout
         </a>
