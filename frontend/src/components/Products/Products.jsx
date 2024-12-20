@@ -19,11 +19,15 @@ const Products = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/products`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`, // Attach token for authentication
+        const response = await axios.get(
+          `${BASE_URL}/products`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`, // Attach token for authentication
+            },
           },
-        });
+          []
+        );
 
         const allProducts = response.data; // Assuming API returns an array
         console.log("All Products:", allProducts);

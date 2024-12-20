@@ -8,7 +8,7 @@ const authenticateVendor = require("../../middleware/authenticateVendor");
 
 router.post("/products", authenticateVendor, productController.createProduct);
 
-router.get("/products", authenticateVendor, productController.getAllProducts);
+router.get("/products", productController.getAllProducts);
 
 router.put("/product/:id", authenticateVendor, productController.editProduct);
 module.exports = router;

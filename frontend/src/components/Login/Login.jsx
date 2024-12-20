@@ -3,7 +3,8 @@ import axios from "axios";
 
 import BASE_URL from "../../constant";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Home from "../../clients/components/Home/Home";
 
 const Login = () => {
   const [register, setRegister] = useState(false);
@@ -67,77 +68,83 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      {/* Login Container */}
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center mb-6 text-gray-700">
-          {register ? "Register" : "Login"}
-        </h2>
+    <div className="relative min-h-screen bg-gray-100">
+      <div className="absolute top-4 right-4 border-2 px-4 py-2 bg-slate-700 text-white rounded shadow-md hover:bg-slate-400 transition-opacity">
+        <Link to="/client">Clent</Link>
+      </div>
 
-        {/* Form */}
-        <form className="flex flex-col" onSubmit={handleSubmit}>
-          {register && (
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        {/* Login Container */}
+        <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+          <h2 className="text-2xl font-bold text-center mb-6 text-gray-700">
+            {register ? "Register" : "Login"}
+          </h2>
+
+          {/* Form */}
+          <form className="flex flex-col" onSubmit={handleSubmit}>
+            {register && (
+              <div className="mb-4">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  placeholder="Enter Your Name"
+                  className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+            )}
+
+            {/* Email Input */}
             <div className="mb-4">
               <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
+                value={formData.email}
                 onChange={handleChange}
+                type="email"
+                id="email"
+                name="email"
                 required
-                placeholder="Enter Your Name"
+                placeholder="Enter Your Email"
                 className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
-          )}
 
-          {/* Email Input */}
-          <div className="mb-4">
-            <input
-              value={formData.email}
-              onChange={handleChange}
-              type="email"
-              id="email"
-              name="email"
-              required
-              placeholder="Enter Your Email"
-              className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+            {/* Password Input */}
+            <div className="mb-6">
+              <input
+                value={formData.password}
+                onChange={handleChange}
+                type="password"
+                id="password"
+                name="password"
+                required
+                placeholder="Enter your Password"
+                className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
 
-          {/* Password Input */}
-          <div className="mb-6">
-            <input
-              value={formData.password}
-              onChange={handleChange}
-              type="password"
-              id="password"
-              name="password"
-              required
-              placeholder="Enter your Password"
-              className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full p-3 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600 transition duration-300"
+            >
+              {register ? "Register" : "Login"}
+            </button>
+          </form>
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full p-3 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600 transition duration-300"
-          >
-            {register ? "Register" : "Login"}
-          </button>
-        </form>
-
-        {/* Toggle Text */}
-        <p className="flex justify-end mt-4">
-          {register ? "Already have an account?" : "Don't have an account?"}
-          <span
-            className="text-red-700 cursor-pointer ml-1"
-            onClick={handleToggle}
-          >
-            {register ? "Login" : "Register"}
-          </span>
-        </p>
+          {/* Toggle Text */}
+          <p className="flex justify-end mt-4">
+            {register ? "Already have an account?" : "Don't have an account?"}
+            <span
+              className="text-red-700 cursor-pointer ml-1"
+              onClick={handleToggle}
+            >
+              {register ? "Login" : "Register"}
+            </span>
+          </p>
+        </div>
       </div>
     </div>
   );

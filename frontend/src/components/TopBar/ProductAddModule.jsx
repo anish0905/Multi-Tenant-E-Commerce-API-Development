@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import BASE_URL from "../../constant";
 const venderId = localStorage.getItem("venderId");
-console.log(venderId);
 
 const ProductAddModule = () => {
   const [loading, setLoading] = useState(false);
